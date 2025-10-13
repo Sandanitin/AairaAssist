@@ -1,23 +1,29 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import Homepage from './components/Homepage';
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={
-          <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                Admin Dashboard
-              </h1>
-            </div>
-          </div>
-        } />
-      </Routes>
-    </div>
-  )
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="pt-16">
+          <Routes>
+            <Route path="/" element={<Homepage/>} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
 
