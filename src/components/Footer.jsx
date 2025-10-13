@@ -24,9 +24,7 @@ const Footer = () => {
           <div>
             <div className="mb-6">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold text-xl">A</span>
-                </div>
+                <img src="/logo.png" alt="AairaAssist logo" className="h-10 w-auto mr-3" />
                 <h3 className="text-xl font-bold text-white">AairaAssist.ae</h3>
               </div>
               <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
