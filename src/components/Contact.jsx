@@ -80,11 +80,11 @@ const Contact = () => {
       </section>
 
        {/* Contact Information Section */}
-       <section className="py-20 bg-white">
+       <section className="py-16 md:py-20 bg-white">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
              {/* Our Location */}
-             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+             <div className="bg-white rounded-xl shadow-lg p-5 md:p-6 text-center hover:shadow-xl transition-shadow duration-300">
                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                  <MapPinIcon className="w-8 h-8 text-primary-500" />
                </div>
@@ -96,7 +96,7 @@ const Contact = () => {
              </div>
 
              {/* Phone Number */}
-             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+             <div className="bg-white rounded-xl shadow-lg p-5 md:p-6 text-center hover:shadow-xl transition-shadow duration-300">
                <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                  <PhoneIcon className="w-8 h-8 text-secondary-500" />
                </div>
@@ -105,7 +105,7 @@ const Contact = () => {
              </div>
 
              {/* Email Address */}
-             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+             <div className="bg-white rounded-xl shadow-lg p-5 md:p-6 text-center hover:shadow-xl transition-shadow duration-300">
                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                  <EnvelopeIcon className="w-8 h-8 text-primary-500" />
                </div>
@@ -117,7 +117,7 @@ const Contact = () => {
              </div>
 
              {/* Business Hours */}
-             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+             <div className="bg-white rounded-xl shadow-lg p-5 md:p-6 text-center hover:shadow-xl transition-shadow duration-300">
                <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                  <ClockIcon className="w-8 h-8 text-secondary-500" />
                </div>

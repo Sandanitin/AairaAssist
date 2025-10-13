@@ -18,8 +18,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Company Info */}
           <div>
             <div className="mb-6">
@@ -29,7 +29,7 @@ const Footer = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white">AairaAssist.ae</h3>
               </div>
-              <p className="text-gray-300 leading-relaxed text-sm mb-4">
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
                 Your trusted banking and financial advisory partner in Dubai. We provide comprehensive financial solutions to help you achieve your goals.
               </p>
               {/* Social Media Icons */}
@@ -55,13 +55,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold text-white mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xl font-bold text-white mb-4 sm:mb-6">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link 
                     to={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
                   >
                     {link.name}
                   </Link>
@@ -72,7 +72,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-bold text-white mb-6">Contact Info</h4>
+            <h4 className="text-xl font-bold text-white mb-4 sm:mb-6">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-start">
                 <MapPinIcon className="w-5 h-5 text-white mr-3 mt-1" />
@@ -91,9 +91,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-700 mt-8 pt-6">
+        <div className="border-t border-gray-700 mt-6 sm:mt-8 pt-5 sm:pt-6">
           <div className="text-center">
-            <div className="text-gray-400 text-xs">
+            <div className="text-gray-400 text-xs sm:text-sm">
               © {currentYear} AairaAssist.ae. All rights reserved. | Banking & Financial Advisory Services in Dubai
             </div>
           </div>
