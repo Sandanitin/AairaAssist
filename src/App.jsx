@@ -5,7 +5,7 @@ import Header from './components/Header';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
-import Homepage from './components/Homepage';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Header />
         <div className="pt-16">
           <Routes>
-            <Route path="/" element={<Homepage/>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
