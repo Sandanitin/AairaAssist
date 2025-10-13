@@ -276,7 +276,7 @@ const Contact = () => {
                 <p className="text-primary-100 mb-4">
                    For urgent financial matters outside business hours, our emergency support team is available 24/7.
                  </p>
-                <button className="bg-white text-primary-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+                <button className="bg-white text-primary-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 w-full sm:w-auto">
                    Emergency Contact +971-43535218
                  </button>
                </div>
