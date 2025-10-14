@@ -1,6 +1,7 @@
 import React from 'react';
+import navLogo from '../assets/logo.png';
 
-const Logo = ({ className = "w-8 h-8", showText = false, size = "medium" }) => {
+const Logo = ({ className = "w-8 h-8", showText = false, size = "medium", width = null }) => {
   const getSizeClasses = () => {
     switch (size) {
       case "small":
@@ -18,9 +19,9 @@ const Logo = ({ className = "w-8 h-8", showText = false, size = "medium" }) => {
     <div className={`flex items-center space-x-3 ${className}`}>
       {/* Logo Image - using the actual Aaira Assist logo */}
       <img 
-        src="/logo.png" 
+        src={navLogo} 
         alt="Aaira Assist Logo" 
-        className={`flex-shrink-0 ${imgSize} object-contain`}
+        className={`flex-shrink-0 ${width ? `w-${width}` : imgSize} object-contain`}
       />
       
       {/* Text - matching the logo typography */}

@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import Logo from './Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
+    { 
+      name: 'Services', 
+      href: '/services',
+      hasDropdown: true,
+      subItems: [
+        { name: 'Personal Loan Advisory', href: '/services#personal-loan' },
+        { name: 'Business Loan Advisory', href: '/services#business-loan' },
+        { name: 'Mortgage Advisory', href: '/services#mortgage' },
+        { name: 'Business Account Advisory', href: '/services#business-account' },
+        { name: 'Credit Card Advisory', href: '/services#credit-card' },
+      ]
+    },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -21,7 +33,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/">
-              <Logo className="h-12" showText={false} size="medium" />
+              <Logo className="h-12" showText={false} size="medium" width="32"/>
             </Link>
           </div>
 
@@ -29,17 +41,49 @@ const Header = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    location.pathname === item.href
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-700 hover:text-primary-500'
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name} className="relative">
+                  {item.hasDropdown ? (
+                    <div className="relative group">
+                      <Link
+                        to={item.href}
+                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center ${
+                          location.pathname === item.href
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-gray-700 hover:text-primary-500'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDownIcon className="ml-1 w-4 h-4" />
+                      </Link>
+                      
+                      {/* Desktop Dropdown */}
+                      <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="py-2">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors duration-200"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                        location.pathname === item.href
+                          ? 'text-primary-600 bg-primary-50'
+                          : 'text-gray-700 hover:text-primary-500'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -65,19 +109,62 @@ const Header = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-                    location.pathname === item.href
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-700 hover:text-primary-500'
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.name}>
+                  {item.hasDropdown ? (
+                    <div>
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className={`w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                          location.pathname === item.href
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-gray-700 hover:text-primary-500'
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        {isServicesOpen ? (
+                          <ChevronUpIcon className="w-5 h-5" />
+                        ) : (
+                          <ChevronDownIcon className="w-5 h-5" />
+                        )}
+                      </button>
+                      
+                      {isServicesOpen && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-primary-500 hover:bg-gray-50 transition-colors duration-200"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                        location.pathname === item.href
+                          ? 'text-primary-600 bg-primary-50'
+                          : 'text-gray-700 hover:text-primary-500'
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
               ))}
+              
+              {/* Login Button */}
+              <div className="pt-4 border-t border-gray-200">
+                <button className="w-full bg-primary-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200">
+                  Login
+                </button>
+              </div>
             </div>
           </div>
         )}

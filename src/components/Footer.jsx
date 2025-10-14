@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 import { Link } from 'react-router-dom';
 import { 
   PhoneIcon, 
@@ -24,8 +25,9 @@ const Footer = () => {
           <div>
             <div className="mb-6">
               <div className="flex items-center mb-4">
-                <img src="/logo.png" alt="AairaAssist logo" className="h-10 w-auto mr-3" />
-                <h3 className="text-xl font-bold text-white">AairaAssist.ae</h3>
+           
+                <Logo className="h-12" size="medium" width="32"/>
+                
               </div>
               <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
                 Your trusted banking and financial advisory partner in Dubai. We provide comprehensive financial solutions to help you achieve your goals.

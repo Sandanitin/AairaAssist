@@ -4,8 +4,10 @@ import {
   EnvelopeIcon, 
   MapPinIcon,
   ClockIcon,
-  ExclamationTriangleIcon
+  ExclamationTriangleIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +18,9 @@ const Contact = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,18 +28,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // EmailJS configuration - Replace with your actual IDs
+      const serviceId = 'service_j1it8n7';
+      const templateId = 'template_uvnmczx';
+      const publicKey = 'h7cnMVE1nufu98OC7';
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_email: 'info@aairaassist.ae', // Your business email
+        reply_to: formData.email
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -139,6 +171,25 @@ const Contact = () => {
              <div className="bg-white rounded-2xl shadow-lg p-8">
                <h2 className="text-2xl font-bold text-gray-900 mb-8">Send us a Message</h2>
                
+               {/* Status Messages */}
+               {submitStatus === 'success' && (
+                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                   <CheckCircleIcon className="w-5 h-5 text-green-500 mr-3" />
+                   <span className="text-green-700 font-medium">
+                     Thank you! Your message has been sent successfully. We'll get back to you soon.
+                   </span>
+                 </div>
+               )}
+               
+               {submitStatus === 'error' && (
+                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center">
+                   <ExclamationTriangleIcon className="w-5 h-5 text-red-500 mr-3" />
+                   <span className="text-red-700 font-medium">
+                     Sorry, there was an error sending your message. Please try again or contact us directly.
+                   </span>
+                 </div>
+               )}
+               
                <form onSubmit={handleSubmit} className="space-y-6">
                  <div>
                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -225,12 +276,29 @@ const Contact = () => {
 
                  <button
                    type="submit"
-                   className="w-full bg-primary-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200 flex items-center justify-center"
+                   disabled={isSubmitting}
+                   className={`w-full py-4 px-6 rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200 flex items-center justify-center ${
+                     isSubmitting 
+                       ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                       : 'bg-primary-500 text-white hover:bg-primary-600'
+                   }`}
                  >
-                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                   </svg>
-                   Send Message
+                   {isSubmitting ? (
+                     <>
+                       <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                       </svg>
+                       Sending...
+                     </>
+                   ) : (
+                     <>
+                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                       </svg>
+                       Send Message
+                     </>
+                   )}
                  </button>
                </form>
              </div>

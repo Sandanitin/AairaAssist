@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   CreditCardIcon, 
   BuildingOfficeIcon, 
@@ -9,10 +9,24 @@ import {
   CheckCircleIcon,
   UserGroupIcon,
   ShieldCheckIcon,
-  ClockIcon
+  ClockIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openServiceModal = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const closeServiceModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
+
   const services = [
     {
       icon: UserIcon,
@@ -136,7 +150,10 @@ const Services = () => {
                   ))}
                 </ul>
                 
-                <button className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors duration-200">
+                <button 
+                  onClick={() => openServiceModal(service)}
+                  className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors duration-200"
+                >
                   Learn More
                 </button>
               </div>
@@ -225,22 +242,82 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-              <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-                Contact us today to discuss how our services can help you achieve your financial goals
-              </p>
-              <button className="bg-white text-primary-500 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-                Schedule a Consultation
+      {/* Service Detail Modal */}
+      {isModalOpen && selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50" onClick={closeServiceModal}></div>
+          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-8 mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-start justify-between mb-6">
+              <div className="flex items-center">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                  <selectedService.icon className="w-8 h-8 text-primary-500" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">{selectedService.title}</h3>
+                  <p className="text-gray-600">Detailed Information</p>
+                </div>
+              </div>
+              <button 
+                onClick={closeServiceModal} 
+                aria-label="Close" 
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <XMarkIcon className="w-6 h-6" />
               </button>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Service Overview</h4>
+                <p className="text-gray-600 leading-relaxed">{selectedService.description}</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features</h4>
+                <ul className="space-y-2">
+                  {selectedService.features.map((feature, index) => (
+                    <li key={index} className="flex items-center text-gray-600">
+                      <CheckCircleIcon className="w-5 h-5 text-green-500 mr-3" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Why Choose This Service?</h4>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Expert guidance from certified financial advisors</li>
+                  <li>• Competitive rates and flexible terms</li>
+                  <li>• Quick approval process</li>
+                  <li>• 24/7 customer support</li>
+                  <li>• Secure and confidential service</li>
+                </ul>
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4">
+                <button 
+                  onClick={closeServiceModal}
+                  className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50"
+                >
+                  Close
+                </button>
+                <button 
+                  onClick={() => {
+                    closeServiceModal();
+                    // You can add navigation to contact form here
+                    window.location.href = '/contact';
+                  }}
+                  className="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700"
+                >
+                  Get Started
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      )}
+      
     </div>
   );
 };

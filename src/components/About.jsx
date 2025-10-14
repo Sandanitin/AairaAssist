@@ -7,6 +7,7 @@ import {
   BoltIcon,
   FlagIcon
 } from '@heroicons/react/24/outline';
+import aboutImage from '../assets/about.png';
 
 const About = () => {
   const coreValues = [
@@ -48,29 +49,55 @@ const About = () => {
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Text Content */}
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Who We Are
-              </h2>
-              
+            <div className="space-y-10">
               <div className="space-y-6">
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+                  About AairaAssist
+                </div>
+                
+                <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                  Who We Are
+                </h2>
+                
+                <div className="w-20 h-1 bg-primary-500 rounded-full"></div>
+              </div>
+              
+              <div className="space-y-8">
+                <p className="text-xl text-gray-700 leading-relaxed font-medium">
                   We are a trusted financial advisory and banking solutions partner, delivering innovative strategies and expert guidance to individuals, families, and businesses.
                 </p>
                 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  We are known for build a reputation for excellence, helping individuals and businesses navigate complex financial decisions with confidence. Our team combines deep local market knowledge with international best practices.
+                  We are known for building a reputation for excellence, helping individuals and businesses navigate complex financial decisions with confidence. Our team combines deep local market knowledge with international best practices.
                 </p>
               </div>
               
-              {/* Feature Highlight */}
-              <div className="flex items-center pt-6">
-                <CheckIcon className="w-6 h-6 text-green-500 mr-3" />
-                <span className="text-lg font-bold text-gray-900">10+ Years of Excellence</span>
+              {/* Enhanced Feature Highlights */}
+              <div className="space-y-6">
+                <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                    <CheckIcon className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <span className="text-xl font-bold text-gray-900">10+ Years of Excellence</span>
+                    <p className="text-gray-600 text-sm">Proven track record in Dubai</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <UserGroupIcon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <span className="text-xl font-bold text-gray-900">Professional financial advisors in Dubai office</span>
+                    <p className="text-gray-600 text-sm">Expert financial advisors ready to serve you</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -78,38 +105,17 @@ const About = () => {
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="aspect-w-4 aspect-h-3">
-                  <div className="w-full h-96 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                    {/* Professional Office Scene */}
-                    <div className="relative w-full h-full bg-white">
-                      {/* Office Background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50"></div>
-                      
-                      {/* Desk */}
-                      <div className="absolute bottom-0 left-0 right-0 h-32 bg-white"></div>
-                      
-                      {/* Professional Consultation Scene */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center p-8">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-4">
-                            <UserGroupIcon className="w-12 h-12 text-primary-600" />
-                          </div>
-                          <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional financial advisors in Dubai office</h3>
-                          <p className="text-gray-600">Expert financial advisors ready to serve you</p>
-                        </div>
-                      </div>
-                      
-                      {/* Desk Items */}
-                      <div className="absolute bottom-8 left-8 flex space-x-4">
-                        <div className="w-8 h-8 bg-pink-300 rounded"></div>
-                        <div className="w-8 h-8 bg-blue-300 rounded"></div>
-                        <div className="w-12 h-8 bg-orange-200 rounded-full"></div>
-                      </div>
-                      
-                      {/* Certificates on Wall */}
-                      <div className="absolute top-8 right-8 flex space-x-2">
-                        <div className="w-16 h-12 bg-white border border-gray-200 rounded shadow-sm"></div>
-                        <div className="w-16 h-12 bg-white border border-gray-200 rounded shadow-sm"></div>
-                      </div>
+                  <div className="w-full h-96 relative">
+                    <img 
+                      src={aboutImage} 
+                      alt="Professional financial advisors in Dubai office" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                      {/* <div className="text-center p-8 text-white">
+                        <h3 className="text-2xl font-bold mb-4">Professional financial advisors in Dubai office</h3>
+                        <p className="text-lg">Expert financial advisors ready to serve you</p>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -120,13 +126,18 @@ const About = () => {
       </section>
 
       {/* Our Core Values Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-6">
+              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+              Our Foundation
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Our Core Values
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <div className="w-24 h-1 bg-primary-500 rounded-full mx-auto mb-8"></div>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               The principles that guide everything we do at AairaAssist Advisory.
             </p>
           </div>
