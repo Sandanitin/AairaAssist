@@ -113,6 +113,10 @@ const Homepage = () => {
                 </div>
                 <h3 className="text-white font-semibold mb-2">98% Success</h3>
                 <p className="text-gray-300 text-sm">Rate</p>
+
+
+
+                
               </div>
             </div>
           </div>
