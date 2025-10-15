@@ -27,10 +27,10 @@ const Homepage = () => {
     setSubmitStatus(null);
 
     try {
-       // EmailJS configuration - Replace with your actual IDs
-       const serviceId = 'service_j1it8n7';
-       const templateId = 'template_uvnmczx';
-       const publicKey = 'h7cnMVE1nufu98OC7';
+      // EmailJS configuration - Replace with your actual IDs
+      const serviceId = 'service_j1it8n7';
+      const templateId = 'template_uvnmczx';
+      const publicKey = 'h7cnMVE1nufu98OC7';
       // Prepare template parameters
       const templateParams = {
         from_name: inquiryName,
@@ -44,7 +44,7 @@ const Homepage = () => {
 
       // Send email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
+
       setSubmitStatus('success');
       // Auto-close modal after 3 seconds on success
       setTimeout(() => {
@@ -86,7 +86,7 @@ const Homepage = () => {
                   Start Your Journey
                   <ArrowRightIcon className="ml-2 h-5 w-5" />
                 </button>
-               
+
               </div>
             </div>
 
@@ -99,7 +99,7 @@ const Homepage = () => {
                 <h3 className="text-white font-semibold mb-2">500+ Clients</h3>
                 <p className="text-gray-300 text-sm">Happy customers</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 -mt-4">
                 <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
                   <ShieldCheckIcon className="w-6 h-6 text-white" />
@@ -107,17 +107,15 @@ const Homepage = () => {
                 <h3 className="text-white font-semibold mb-2">10+ Years</h3>
                 <p className="text-gray-300 text-sm">Experience</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 mt-4">
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+
+              <div className="col-span-2 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 mt-4 text-center">
+                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                   <LightBulbIcon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-white font-semibold mb-2">98% Success</h3>
                 <p className="text-gray-300 text-sm">Rate</p>
-
-
-
-                
               </div>
+
             </div>
           </div>
         </div>
@@ -144,14 +142,14 @@ const Homepage = () => {
                 </span>
               </div>
             )}
-            
+
             {submitStatus === 'error' && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center">
                 <ExclamationTriangleIcon className="w-5 h-5 text-red-500 mr-3" />
                 <span className="text-red-700 font-medium">
                   Sorry, there was an error sending your inquiry. Please try again or contact us directly.
                 </span>
-            </div>
+              </div>
             )}
 
             <form onSubmit={submitInquiry} className="space-y-5">
@@ -207,25 +205,24 @@ const Homepage = () => {
                     <option value="investment-planning">Investment Planning</option>
                   </select>
                 </label>
-                  </div>
-                  
+              </div>
+
               <div className="flex justify-end gap-3 pt-2">
-                <button 
-                  type="button" 
-                  onClick={closeInquiry} 
+                <button
+                  type="button"
+                  onClick={closeInquiry}
                   disabled={isSubmitting}
                   className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Cancel
                 </button>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-3 rounded-lg font-semibold flex items-center ${
-                    isSubmitting 
-                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                  className={`px-6 py-3 rounded-lg font-semibold flex items-center ${isSubmitting
+                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                       : 'bg-primary-600 text-white hover:bg-primary-700'
-                  }`}
+                    }`}
                 >
                   {isSubmitting ? (
                     <>
@@ -239,15 +236,15 @@ const Homepage = () => {
                     'Submit Inquiry'
                   )}
                 </button>
-                </div>
+              </div>
             </form>
           </div>
         </div>
       )}
 
-      
 
-      
+
+
 
       {/* Section 3 - Hexagon Grid Layout */}
       <section className="py-20 bg-white relative">
@@ -273,14 +270,14 @@ const Homepage = () => {
                     At AairaAssist, every conversation starts with your vision. Every strategy ends in measurable success.
                   </p>
                 </div>
-               
+
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      
+
 
       <Footer />
     </div>
