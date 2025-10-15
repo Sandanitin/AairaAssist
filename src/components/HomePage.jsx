@@ -9,6 +9,7 @@ const Homepage = () => {
   const [inquiryPhone, setInquiryPhone] = useState('');
   const [inquiryEmail, setInquiryEmail] = useState('');
   const [inquiryProduct, setInquiryProduct] = useState('');
+  const [inquiryMessage, setInquiryMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
 
@@ -19,6 +20,7 @@ const Homepage = () => {
     setInquiryPhone('');
     setInquiryEmail('');
     setInquiryProduct('');
+    setInquiryMessage('');
   };
 
   const submitInquiry = async (e) => {
@@ -36,8 +38,8 @@ const Homepage = () => {
         from_name: inquiryName,
         from_email: inquiryEmail,
         phone: inquiryPhone,
-        product: inquiryProduct,
-        message: `New inquiry from ${inquiryName} interested in ${inquiryProduct}`,
+        service: inquiryProduct,
+        message: inquiryMessage || `New inquiry from ${inquiryName} interested in ${inquiryProduct}`,
         to_email: 'info@aairaassist.ae',
         reply_to: inquiryEmail
       };
@@ -191,19 +193,32 @@ const Homepage = () => {
                 </label>
 
                 <label className="grid grid-cols-4 gap-4 items-center">
-                  <span className="text-gray-700 font-medium col-span-1">Product Interested In</span>
+                  <span className="text-gray-700 font-medium col-span-1">Service Interest</span>
                   <select
                     className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
                     value={inquiryProduct}
                     onChange={(e) => setInquiryProduct(e.target.value)}
                     required
                   >
-                    <option value="" disabled>Select a product</option>
-                    <option value="personal-banking">Personal Banking</option>
-                    <option value="wealth-advisory">Wealth Advisory</option>
-                    <option value="corporate-solutions">Corporate Solutions</option>
-                    <option value="investment-planning">Investment Planning</option>
+                    <option value="" disabled>Select a service</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Mortgage">Mortgage</option>
+                    <option value="Business Account">Business Account</option>
+                    <option value="Credit Cards">Credit Cards</option>
+                    <option value="Other">Other</option>
                   </select>
+                </label>
+                
+                <label className="grid grid-cols-4 gap-4 items-start">
+                  <span className="text-gray-700 font-medium col-span-1">Message</span>
+                  <textarea
+                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                    rows={4}
+                    placeholder="Tell us a bit about your needs..."
+                    value={inquiryMessage}
+                    onChange={(e) => setInquiryMessage(e.target.value)}
+                  />
                 </label>
               </div>
 
