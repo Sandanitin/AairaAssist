@@ -122,7 +122,8 @@ const Contact = () => {
                </div>
                <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Location</h3>
                <div className="space-y-1">
-                 <p className="text-gray-700 font-medium">Dubai Financial District</p>
+                 <p className="text-gray-700 font-medium">Office Tower, Bank Street - 4th Floor</p>
+                 <p className="text-gray-700 font-medium">Fahidi Heights - near Sharaf DG Metro</p>
                  <p className="text-gray-600">Dubai, United Arab Emirates</p>
                </div>
              </div>
@@ -144,7 +145,7 @@ const Contact = () => {
                <h3 className="text-lg font-semibold text-gray-900 mb-3">Email Address</h3>
                <div className="space-y-1">
                  <p className="text-gray-700 font-medium">info@aairaassist.ae</p>
-                 <p className="text-gray-700 font-medium">hr@aairaassist.ae</p>
+
                </div>
              </div>
 
@@ -155,8 +156,9 @@ const Contact = () => {
                </div>
                <h3 className="text-lg font-semibold text-gray-900 mb-3">Business Hours</h3>
                <div className="space-y-1">
-                 <p className="text-gray-700 font-medium">Monday to Friday: 9:00AM - 6:00PM</p>
-                 <p className="text-gray-700 font-medium">Sunday: Closed</p>
+                 <p className="text-gray-700 font-medium">Monday to Saturday: 9:00AM - 5:00PM</p>
+                 <p className="text-gray-700 font-medium">2nd & 4th Saturday: Holiday</p>
+                 <p className="text-gray-700 font-medium">Sunday: Holiday</p>
                </div>
              </div>
            </div>
@@ -306,17 +308,31 @@ const Contact = () => {
              {/* Right Column - Office Information */}
              <div className="space-y-8">
                {/* Visit Our Office */}
-               <div className="bg-white rounded-xl shadow-lg p-6">
-                 <div className="bg-gray-200 rounded-lg h-48 mb-4 flex items-center justify-center">
-                   <div className="text-center">
-                     <MapPinIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                     <p className="text-gray-500">Dubai Skyline</p>
-                   </div>
+               <div className="bg-white rounded-2xl shadow-lg p-6">
+                 <div className="rounded-lg overflow-hidden mb-4">
+                   <iframe
+                     title="Aaira Assist Location Map"
+                     src="https://www.google.com/maps?q=Office%20Tower%2C%20Bank%20Street%20-%204th%20Floor%2C%20Fahidi%20Heights%20-%20near%20Sharaf%20DG%20Metro%2C%20Dubai%2C%20United%20Arab%20Emirates&output=embed"
+                     width="100%"
+                     height="220"
+                     style={{ border: 0 }}
+                     allowFullScreen=""
+                     loading="lazy"
+                     referrerPolicy="no-referrer-when-downgrade"
+                   />
                  </div>
                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Visit Our Office</h3>
                  <p className="text-gray-600 leading-relaxed">
-                   Located in the heart of Dubai's Financial District, our office is easily accessible and equipped with modern facilities for client consultations.
+                   Located in Office Tower, Bank Street - 4th Floor, Fahidi Heights near Sharaf DG Metro, our office is easily accessible and equipped with modern facilities for client consultations.
                  </p>
+                 <a
+                   href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x3e5f43101ea9d7c7:0xab73d892cc3c86e7?entry=s&sa=X&ved=2ahUKEwiuwIKP5auQAxUtTkEAHRSqCygQ4kB6BAgVEAA"
+                   target="_blank"
+                   rel="noreferrer"
+                   className="inline-block mt-4 text-primary-600 hover:text-primary-700 font-semibold"
+                 >
+                   View on Google Maps →
+                 </a>
                </div>
 
                {/* Quick Contact */}
@@ -333,7 +349,7 @@ const Contact = () => {
                    </div>
                    <div className="flex items-center">
                      <ClockIcon className="w-5 h-5 text-gray-500 mr-3" />
-                     <span className="text-gray-700">Mon-Fri: 9AM-6PM, Sun: Closed</span>
+                     <span className="text-gray-700">Mon-Sat: 9AM-5PM, 2nd & 4th Sat & Sun: Holiday</span>
                    </div>
                  </div>
                </div>

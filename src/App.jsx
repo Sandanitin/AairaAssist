@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppToggle from './components/WhatsAppToggle';
 
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
+        <WhatsAppToggle />
       </div>
     </Router>
   );

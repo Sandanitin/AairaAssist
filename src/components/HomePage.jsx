@@ -3,7 +3,13 @@ import { ArrowRightIcon, UserGroupIcon, ShieldCheckIcon, LightBulbIcon, CheckCir
 import Footer from './Footer';
 import heroImage from '../assets/hero.png';
 import emailjs from '@emailjs/browser';
+import { useSEO } from '../hooks/useSEO';
 const Homepage = () => {
+  useSEO({
+    title: 'AairaAssist | Financial Advisory & Banking Services in Dubai',
+    description: 'Trusted financial advisory in Dubai. Personal loans, business loans, mortgage advice, and more. Start your financial journey with AairaAssist.',
+    keywords: ['AairaAssist', 'Financial Advisory', 'Dubai', 'Loans', 'Mortgage'],
+  });
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [inquiryName, setInquiryName] = useState('');
   const [inquiryPhone, setInquiryPhone] = useState('');

@@ -122,6 +122,18 @@ const Footer = () => {
             © {currentYear} <span className="text-primary-400 font-semibold">AairaAssist.ae</span>. 
             All rights reserved. | Trusted Financial Advisory Services in Dubai
           </p>
+          <p className="text-gray-500 text-xs sm:text-sm mt-2">
+            Developed with <span aria-hidden>❤️</span> by
+            {' '}
+            <a
+              href="https://www.vikrin.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary-400 hover:text-primary-300 font-semibold"
+            >
+              Vikrin
+            </a>
+          </p>
         </div>
       </div>
 

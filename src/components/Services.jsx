@@ -10,21 +10,71 @@ import {
   UserGroupIcon,
   ShieldCheckIcon,
   ClockIcon,
-  XMarkIcon
+  XMarkIcon,
+  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
+import emailjs from '@emailjs/browser';
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Inquiry form state
+  const [inquiryData, setInquiryData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
   const openServiceModal = (service) => {
     setSelectedService(service);
+    setInquiryData((prev) => ({ ...prev, service: service?.title || '' }));
     setIsModalOpen(true);
   };
 
   const closeServiceModal = () => {
     setIsModalOpen(false);
     setSelectedService(null);
+    setSubmitStatus(null);
+  };
+
+  const handleInquiryChange = (e) => {
+    const { name, value } = e.target;
+    setInquiryData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleInquirySubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const serviceId = 'service_j1it8n7';
+      const templateId = 'template_uvnmczx';
+      const publicKey = 'h7cnMVE1nufu98OC7';
+
+      const templateParams = {
+        from_name: inquiryData.name,
+        from_email: inquiryData.email,
+        phone: inquiryData.phone,
+        service: inquiryData.service || selectedService?.title || 'General',
+        message: inquiryData.message,
+        to_email: 'info@aairaassist.ae',
+        reply_to: inquiryData.email
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      setSubmitStatus('success');
+      setInquiryData({ name: '', phone: '', email: '', service: selectedService?.title || '', message: '' });
+    } catch (err) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -97,7 +147,7 @@ const Services = () => {
     {
       icon: ClockIcon,
       title: 'Proven Track Record',
-      description: '15+ years of successful client relationships and results'
+      description: '10+ years of successful client relationships and results'
     },
     {
       icon: CurrencyDollarIcon,
@@ -284,34 +334,111 @@ const Services = () => {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">Why Choose This Service?</h4>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• Expert guidance from certified financial advisors</li>
-                  <li>• Competitive rates and flexible terms</li>
-                  <li>• Quick approval process</li>
-                  <li>• 24/7 customer support</li>
-                  <li>• Secure and confidential service</li>
-                </ul>
-              </div>
+              {/* Inquire Now Form */}
+              <div className="pt-4 border-t">
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Inquire Now</h4>
 
-              <div className="flex justify-end gap-3 pt-4">
-                <button 
-                  onClick={closeServiceModal}
-                  className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50"
-                >
-                  Close
-                </button>
-                <button 
-                  onClick={() => {
-                    closeServiceModal();
-                    // You can add navigation to contact form here
-                    window.location.href = '/contact';
-                  }}
-                  className="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700"
-                >
-                  Get Started
-                </button>
+                {submitStatus === 'success' && (
+                  <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                    <CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" />
+                    <span className="text-green-700 text-sm font-medium">Thank you! Your inquiry has been sent.</span>
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center">
+                    <ExclamationTriangleIcon className="w-5 h-5 text-red-500 mr-2" />
+                    <span className="text-red-700 text-sm font-medium">Sorry, there was an error. Please try again.</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleInquirySubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={inquiryData.name}
+                        onChange={handleInquiryChange}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={inquiryData.phone}
+                        onChange={handleInquiryChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="+971 50 123 4567"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={inquiryData.email}
+                        onChange={handleInquiryChange}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                        placeholder="john.doe@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                      <select
+                        name="service"
+                        value={inquiryData.service}
+                        onChange={handleInquiryChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                      >
+                        <option value="">Select a service</option>
+                        <option>Personal Loan</option>
+                        <option>Business Loan</option>
+                        <option>Mortgage</option>
+                        <option>Business Account</option>
+                        <option>Credit Cards</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea
+                      name="message"
+                      value={inquiryData.message}
+                      onChange={handleInquiryChange}
+                      rows={4}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                      placeholder="Tell us a bit about your needs..."
+                    />
+                  </div>
+
+                  <div className="flex justify-end gap-3 pt-2">
+                    <button 
+                      type="button"
+                      onClick={closeServiceModal}
+                      className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50"
+                    >
+                      Cancel
+                    </button>
+                    <button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
