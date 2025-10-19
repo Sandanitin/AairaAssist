@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import {
   PhoneIcon,
@@ -27,7 +26,16 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <Logo className="h-12" size="medium" width="32" />
+              <img 
+                src="/src/assets/logo.png" 
+                alt="Aaira Assist Logo" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  console.error('Footer logo failed to load:', e);
+                  e.target.onerror = null;
+                  e.target.src = '/vite.svg';
+                }}
+              />
             </div>
             <p className="text-gray-400 leading-relaxed text-sm sm:text-base mb-6">
               Your trusted financial advisory partner in Dubai. We simplify the

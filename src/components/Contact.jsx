@@ -50,9 +50,7 @@ const Contact = () => {
         reply_to: formData.email
       };
 
-      // Debug: Log the data being sent
-      console.log('Form data being sent:', formData);
-      console.log('Template parameters:', templateParams);
+     
 
       // Send email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);

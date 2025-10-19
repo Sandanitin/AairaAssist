@@ -69,10 +69,10 @@ const Services = () => {
     setSubmitStatus(null);
 
     try {
-       // EmailJS configuration - Replace with your actual IDs
-       const serviceId = 'service_van68sx';
-       const templateId = 'template_vvqwg6g';
-       const publicKey = 'lp3xlBpSGL1BpQm73';
+      // EmailJS configuration - Replace with your actual IDs
+      const serviceId = 'service_van68sx';
+      const templateId = 'template_vvqwg6g';
+      const publicKey = 'lp3xlBpSGL1BpQm73';
 
       const templateParams = {
         from_name: inquiryData.name,
@@ -190,45 +190,44 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
-              // Create anchor IDs for each service
               const serviceId = service.title.toLowerCase().replace(/\s+/g, '-');
               return (
-              <div
-                key={index}
-                id={serviceId}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-primary-200 scroll-mt-20"
-              >
-                <div className="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6 group-hover:bg-primary-200 transition-colors duration-300">
-                  <service.icon className="w-8 h-8 text-primary-500" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                
-                <button 
-                  onClick={() => openServiceModal(service)}
-                  className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 active:bg-primary-700 transition-colors duration-200 touch-manipulation"
-                  type="button"
+                <div
+                  key={index}
+                  id={serviceId}
+                  className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 sm:p-8 border border-gray-100 hover:border-primary-200 scroll-mt-20 relative"
                 >
-                  Learn More
-                </button>
-              </div>
+                  <div className="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6 group-hover:bg-primary-200 transition-colors duration-300">
+                    <service.icon className="w-8 h-8 text-primary-500" />
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button 
+                    onClick={() => openServiceModal(service)}
+                    className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 active:bg-primary-700 transition-colors duration-200 touch-manipulation"
+                    type="button"
+                  >
+                    Learn More
+                  </button>
+                </div>
               );
             })}
           </div>
@@ -247,7 +246,7 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
@@ -264,7 +263,6 @@ const Services = () => {
           </div>
         </div>
       </section>
-
 
       {/* Why Choose Our Services Section */}
       <section className="py-20 bg-gray-50">
@@ -319,7 +317,7 @@ const Services = () => {
       {isModalOpen && selectedService && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={closeServiceModal}></div>
-          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-4 sm:p-8 mx-4 max-h-[95vh] overflow-y-auto">
+          <div className="relative bg-white w-full max-w-md sm:max-w-2xl rounded-xl shadow-2xl p-4 sm:p-8 mx-4 max-h-[95vh] overflow-y-auto">
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center flex-1 min-w-0">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-100 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
@@ -423,11 +421,7 @@ const Services = () => {
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                       >
                         <option value="">Select a service</option>
-                        <option>Personal Loan</option>
-                        <option>Business Loan</option>
-                        <option>Mortgage</option>
-                        <option>Business Account</option>
-                        <option>Credit Cards</option>
+                        {services.map((s, i) => <option key={i}>{s.title}</option>)}
                         <option>Other</option>
                       </select>
                     </div>
@@ -449,14 +443,14 @@ const Services = () => {
                     <button 
                       type="button"
                       onClick={closeServiceModal}
-                      className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors duration-200 touch-manipulation"
+                      className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors duration-200"
                     >
                       Cancel
                     </button>
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full sm:w-auto px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 touch-manipulation ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      className={`w-full sm:w-auto px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
                     >
                       {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
                     </button>
@@ -467,7 +461,6 @@ const Services = () => {
           </div>
         </div>
       )}
-      
     </div>
   );
 };

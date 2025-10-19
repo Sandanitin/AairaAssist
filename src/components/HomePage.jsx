@@ -91,7 +91,7 @@ const Homepage = () => {
                 In a world where finance moves fast and opportunity demands clarity, AairaAssist stands as your dedicated partner — simplifying the complex, personalizing the professional, and guiding you toward lasting success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => setIsInquiryOpen(true)} className="inline-flex items-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <button onClick={() => setIsInquiryOpen(true)} className="inline-flex items-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 active:bg-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0 touch-manipulation">
                   Start Your Journey
                   <ArrowRightIcon className="ml-2 h-5 w-5" />
                 </button>
@@ -234,14 +234,14 @@ const Homepage = () => {
                   type="button"
                   onClick={closeInquiry}
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 touch-manipulation"
+                  className="w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 touch-manipulation"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full sm:w-auto px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-colors duration-200 touch-manipulation ${isSubmitting
+                  className={`w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-lg font-semibold flex items-center justify-center transition-colors duration-200 touch-manipulation ${isSubmitting
                       ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                       : 'bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800'
                     }`}
