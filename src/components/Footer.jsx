@@ -27,9 +27,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <img 
-                src="/src/assets/logo.png" 
+                src="/logo.png" 
                 alt="Aaira Assist Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-10 w-auto object-contain"
                 onError={(e) => {
                   console.error('Footer logo failed to load:', e);
                   e.target.onerror = null;
@@ -38,9 +38,9 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-400 leading-relaxed text-sm sm:text-base mb-6">
-              Your trusted financial advisory partner in Dubai. We simplify the
-              complex and guide you toward lasting financial success with clarity
-              and confidence.
+              Your trusted financial advisory partner in Dubai. We provide comprehensive 
+              banking and financial solutions tailored to meet your unique needs with 
+              expert guidance and personalized service.
             </p>
 
             {/* Social Icons */}
@@ -114,11 +114,15 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="w-5 h-5 text-primary-400 mr-3" />
-                <span>+971 4353 5218</span>
+                <a href="tel:+97143535218" className="hover:text-primary-400 transition-colors">
+                  +971 4353 5218
+                </a>
               </div>
               <div className="flex items-center">
                 <EnvelopeIcon className="w-5 h-5 text-primary-400 mr-3" />
-                <span>info@aairaassist.ae</span>
+                <a href="mailto:info@aairaassist.ae" className="hover:text-primary-400 transition-colors">
+                  info@aairaassist.ae
+                </a>
               </div>
             </div>
           </div>
