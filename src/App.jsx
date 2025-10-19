@@ -14,15 +14,15 @@ function App() {
     <React.StrictMode>
       <ScrollToTop />
       <Header />
-      <main className="pt-16">
+      
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
-      </main>
-      <WhatsAppToggle />
+   
+      {/* <WhatsAppToggle /> */}
     </React.StrictMode>
   );
 }
