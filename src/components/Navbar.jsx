@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-16 md:h-20 items-center">
           {/* Logo */}
           <Link
             to="/"
@@ -67,7 +67,7 @@ const Navbar = () => {
             <img
               src="/logo.png"
               alt="Logo"
-              className="w-36 h-18 object-contain"
+              className="w-32 h-14 md:w-36 md:h-18 object-contain"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "/vite.svg";

@@ -22,7 +22,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
    
-      {/* <WhatsAppToggle /> */}
+      <WhatsAppToggle />
     </React.StrictMode>
   );
 }

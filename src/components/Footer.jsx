@@ -21,15 +21,15 @@ const Footer = () => {
       {/* Top Accent Line */}
       <div className="h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-primary-700"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
           {/* Company Info */}
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-4">
               <img 
                 src="/logo.png" 
                 alt="Aaira Assist Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-8 w-auto object-contain"
                 onError={(e) => {
                   console.error('Footer logo failed to load:', e);
                   e.target.onerror = null;
@@ -37,17 +37,16 @@ const Footer = () => {
                 }}
               />
             </div>
-            <p className="text-gray-400 leading-relaxed text-sm sm:text-base mb-6">
+            <p className="text-gray-400 leading-relaxed text-xs sm:text-sm mb-4">
               Your trusted financial advisory partner in Dubai. We provide comprehensive 
-              banking and financial solutions tailored to meet your unique needs with 
-              expert guidance and personalized service.
+              banking and financial solutions tailored to meet your unique needs.
             </p>
 
             {/* Social Icons */}
             <div className="flex space-x-4">
               {[
                 {
-                  href: "#",
+                  href: "https://www.linkedin.com/company/aaira-assist/",
                   path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
                 },
                 {
@@ -85,15 +84,15 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6 border-l-4 border-primary-500 pl-3">
+            <h4 className="text-base font-semibold text-white mb-4 border-l-4 border-primary-500 pl-3">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-all duration-200 text-sm sm:text-base"
+                    className="text-gray-400 hover:text-primary-400 transition-all duration-200 text-xs sm:text-sm"
                   >
                     {link.name}
                   </Link>
@@ -104,13 +103,13 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6 border-l-4 border-primary-500 pl-3">
+            <h4 className="text-base font-semibold text-white mb-4 border-l-4 border-primary-500 pl-3">
               Contact Info
             </h4>
-            <div className="space-y-4 text-gray-400 text-sm sm:text-base">
+            <div className="space-y-3 text-gray-400 text-xs sm:text-sm">
               <div className="flex items-start">
                 <MapPinIcon className="w-5 h-5 text-primary-400 mr-3 mt-1" />
-                <span>Dubai, UAE</span>
+                <span>Business Bay, Dubai, UAE</span>
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="w-5 h-5 text-primary-400 mr-3" />
@@ -129,10 +128,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-6 text-center">
+        <div className="border-t border-gray-800 mt-8 pt-4 text-center">
           <p className="text-gray-500 text-xs sm:text-sm">
-            © {currentYear} <span className="text-primary-400 font-semibold">AairaAssist.ae</span>. 
-            All rights reserved. | Trusted Financial Advisory Services in Dubai
+            © {currentYear} <span className="text-primary-400 font-semibold">Aaira Assist Financing Broker CO. L.L.C S.O.C</span>.
+            <span className="block sm:inline">All rights reserved. | Trusted Financial Advisory Services in Dubai</span>
           </p>
           <p className="text-gray-500 text-xs sm:text-sm mt-2">
             Developed with <span aria-hidden>❤️</span> by

@@ -122,11 +122,11 @@ const Contact = () => {
                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                  <MapPinIcon className="w-8 h-8 text-primary-500" />
                </div>
-               <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Location</h3>
-               <div className="space-y-1">
-                 <p className="text-gray-700 font-medium">Office Tower, Bank Street - 4th Floor</p>
-                 <p className="text-gray-700 font-medium">Fahidi Heights - near Sharaf DG Metro</p>
-                 <p className="text-gray-600">Dubai, United Arab Emirates</p>
+               <h3 className="text-base font-semibold text-gray-900 mb-2">Our Location</h3>
+               <div className="space-y-0.5">
+                 <p className="text-xs text-gray-700 font-medium leading-tight">Office Tower, Bank Street - 4th Floor</p>
+                 <p className="text-xs text-gray-700 font-medium leading-tight">Fahidi Heights - near Sharaf DG Metro</p>
+                 <p className="text-xs text-gray-600 leading-tight">Dubai, United Arab Emirates</p>
                </div>
              </div>
 
@@ -152,15 +152,15 @@ const Contact = () => {
              </div>
 
              {/* Business Hours */}
-             <div className="bg-white rounded-xl shadow-lg p-5 md:p-6 text-center hover:shadow-xl transition-shadow duration-300">
-               <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                 <ClockIcon className="w-8 h-8 text-secondary-500" />
+             <div className="bg-white rounded-xl shadow-lg p-4 md:p-5 text-center hover:shadow-xl transition-shadow duration-300">
+               <div className="w-14 h-14 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                 <ClockIcon className="w-6 h-6 text-secondary-500" />
                </div>
-               <h3 className="text-lg font-semibold text-gray-900 mb-3">Business Hours</h3>
-               <div className="space-y-1">
-                 <p className="text-gray-700 font-medium">Monday to Saturday: 9:00AM - 5:00PM</p>
-                 <p className="text-gray-700 font-medium">2nd & 4th Saturday: Holiday</p>
-                 <p className="text-gray-700 font-medium">Sunday: Holiday</p>
+               <h3 className="text-base font-semibold text-gray-900 mb-2">Business Hours</h3>
+               <div className="space-y-0.5">
+                 <p className="text-xs text-gray-700 font-medium leading-tight">Monday to Saturday: 9:00AM - 5:00PM</p>
+                 <p className="text-xs text-gray-600 leading-tight">2nd & 4th Saturday: Holiday</p>
+                 <p className="text-xs text-gray-600 leading-tight">Sunday: Holiday</p>
                </div>
              </div>
            </div>
