@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CreditCardIcon, 
   BuildingOfficeIcon, 
@@ -18,6 +18,22 @@ import emailjs from '@emailjs/browser';
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Handle smooth scrolling to anchor sections
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+  }, []);
 
   // Inquiry form state
   const [inquiryData, setInquiryData] = useState({
@@ -175,10 +191,14 @@ const Services = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {services.map((service, index) => {
+              // Create anchor IDs for each service
+              const serviceId = service.title.toLowerCase().replace(/\s+/g, '-');
+              return (
               <div
                 key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-primary-200"
+                id={serviceId}
+                className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100 hover:border-primary-200 scroll-mt-20"
               >
                 <div className="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6 group-hover:bg-primary-200 transition-colors duration-300">
                   <service.icon className="w-8 h-8 text-primary-500" />
@@ -209,7 +229,8 @@ const Services = () => {
                   Learn More
                 </button>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

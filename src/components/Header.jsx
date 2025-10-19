@@ -114,10 +114,10 @@ const Header = () => {
                     <div>
                       <button
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
-                        className={`w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                        className={`w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 touch-manipulation ${
                           location.pathname === item.href
                             ? 'text-primary-600 bg-primary-50'
-                            : 'text-gray-700 hover:text-primary-500'
+                            : 'text-gray-700 hover:text-primary-500 active:bg-gray-100'
                         }`}
                       >
                         <span>{item.name}</span>
@@ -134,8 +134,11 @@ const Header = () => {
                             <Link
                               key={subItem.name}
                               to={subItem.href}
-                              className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-primary-500 hover:bg-gray-50 transition-colors duration-200"
-                              onClick={() => setIsMenuOpen(false)}
+                              className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-primary-500 hover:bg-gray-50 transition-colors duration-200 touch-manipulation"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setIsServicesOpen(false);
+                              }}
                             >
                               {subItem.name}
                             </Link>
@@ -158,13 +161,6 @@ const Header = () => {
                   )}
                 </div>
               ))}
-              
-              {/* Login Button */}
-              <div className="pt-4 border-t border-gray-200">
-                <button className="w-full bg-primary-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 touch-manipulation">
-                  Login
-                </button>
-              </div>
             </div>
           </div>
         )}
