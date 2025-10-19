@@ -60,7 +60,7 @@ const About = () => {
                   About AairaAssist
                 </div>
                 
-                <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Who We Are
                 </h2>
                 
@@ -68,11 +68,11 @@ const About = () => {
               </div>
               
               <div className="space-y-8">
-                <p className="text-xl text-gray-700 leading-relaxed font-medium">
+                <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
                   We are a trusted financial advisory and banking solutions partner, delivering innovative strategies and expert guidance to individuals, families, and businesses.
                 </p>
                 
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                   We are known for building a reputation for excellence, helping individuals and businesses navigate complex financial decisions with confidence. Our team combines deep local market knowledge with international best practices.
                 </p>
               </div>

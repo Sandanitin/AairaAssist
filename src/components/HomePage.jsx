@@ -131,9 +131,9 @@ const Homepage = () => {
       </section>
 
       {isInquiryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={closeInquiry}></div>
-          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-8 mx-4">
+          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-4 sm:p-8 mx-4 max-h-[95vh] overflow-y-auto">
             <div className="flex items-start justify-between mb-6">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">Inquire Now</h3>
@@ -161,48 +161,48 @@ const Homepage = () => {
               </div>
             )}
 
-            <form onSubmit={submitInquiry} className="space-y-5">
-              <div className="grid grid-cols-1 gap-5">
-                <label className="grid grid-cols-4 gap-4 items-center">
-                  <span className="text-gray-700 font-medium col-span-1">Name</span>
+            <form onSubmit={submitInquiry} className="space-y-4">
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                   <input
                     type="text"
-                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="John Doe"
                     value={inquiryName}
                     onChange={(e) => setInquiryName(e.target.value)}
                     required
                   />
-                </label>
+                </div>
 
-                <label className="grid grid-cols-4 gap-4 items-center">
-                  <span className="text-gray-700 font-medium col-span-1">Phone</span>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
                   <input
                     type="tel"
-                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="+971 50 123 4567"
                     value={inquiryPhone}
                     onChange={(e) => setInquiryPhone(e.target.value)}
                     required
                   />
-                </label>
+                </div>
 
-                <label className="grid grid-cols-4 gap-4 items-center">
-                  <span className="text-gray-700 font-medium col-span-1">Email</span>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                   <input
                     type="email"
-                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="john.doe@example.com"
                     value={inquiryEmail}
                     onChange={(e) => setInquiryEmail(e.target.value)}
                     required
                   />
-                </label>
+                </div>
 
-                <label className="grid grid-cols-4 gap-4 items-center">
-                  <span className="text-gray-700 font-medium col-span-1">Service Interest</span>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
                   <select
-                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
                     value={inquiryProduct}
                     onChange={(e) => setInquiryProduct(e.target.value)}
                     required
@@ -215,35 +215,35 @@ const Homepage = () => {
                     <option value="Credit Cards">Credit Cards</option>
                     <option value="Other">Other</option>
                   </select>
-                </label>
+                </div>
                 
-                <label className="grid grid-cols-4 gap-4 items-start">
-                  <span className="text-gray-700 font-medium col-span-1">Message</span>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea
-                    className="col-span-3 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
                     rows={4}
                     placeholder="Tell us a bit about your needs..."
                     value={inquiryMessage}
                     onChange={(e) => setInquiryMessage(e.target.value)}
                   />
-                </label>
+                </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row justify-end gap-3 pt-2">
                 <button
                   type="button"
                   onClick={closeInquiry}
                   disabled={isSubmitting}
-                  className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 touch-manipulation"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-3 rounded-lg font-semibold flex items-center ${isSubmitting
+                  className={`w-full sm:w-auto px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-colors duration-200 touch-manipulation ${isSubmitting
                       ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                      : 'bg-primary-600 text-white hover:bg-primary-700'
+                      : 'bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800'
                     }`}
                 >
                   {isSubmitting ? (

@@ -92,7 +92,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-3 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 active:scale-95"
+              className="inline-flex items-center justify-center p-3 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 active:scale-95 touch-manipulation"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -161,7 +161,7 @@ const Header = () => {
               
               {/* Login Button */}
               <div className="pt-4 border-t border-gray-200">
-                <button className="w-full bg-primary-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200">
+                <button className="w-full bg-primary-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 touch-manipulation">
                   Login
                 </button>
               </div>
