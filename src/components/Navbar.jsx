@@ -56,7 +56,7 @@ const Navbar = () => {
               onClick={handleNavClick}
             >
               <img 
-                src="/src/assets/logo.png" 
+                src="/logo.png" 
                 alt="Aaira Assist Logo" 
                 className="w-36 h-18 object-contain"
                 onError={(e) => {
