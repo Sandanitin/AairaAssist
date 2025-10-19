@@ -53,9 +53,10 @@ const Services = () => {
     setSubmitStatus(null);
 
     try {
-      const serviceId = 'service_j1it8n7';
-      const templateId = 'template_uvnmczx';
-      const publicKey = 'h7cnMVE1nufu98OC7';
+       // EmailJS configuration - Replace with your actual IDs
+       const serviceId = 'service_van68sx';
+       const templateId = 'template_vvqwg6g';
+       const publicKey = 'lp3xlBpSGL1BpQm73';
 
       const templateParams = {
         from_name: inquiryData.name,
@@ -202,7 +203,8 @@ const Services = () => {
                 
                 <button 
                   onClick={() => openServiceModal(service)}
-                  className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors duration-200"
+                  className="w-full bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 active:bg-primary-700 transition-colors duration-200 touch-manipulation"
+                  type="button"
                 >
                   Learn More
                 </button>
@@ -294,23 +296,23 @@ const Services = () => {
 
       {/* Service Detail Modal */}
       {isModalOpen && selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={closeServiceModal}></div>
-          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-8 mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl p-4 sm:p-8 mx-4 max-h-[95vh] overflow-y-auto">
             <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
-                  <selectedService.icon className="w-8 h-8 text-primary-500" />
+              <div className="flex items-center flex-1 min-w-0">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-100 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                  <selectedService.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500" />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">{selectedService.title}</h3>
-                  <p className="text-gray-600">Detailed Information</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 truncate">{selectedService.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600">Detailed Information</p>
                 </div>
               </div>
               <button 
                 onClick={closeServiceModal} 
                 aria-label="Close" 
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 p-1 flex-shrink-0"
               >
                 <XMarkIcon className="w-6 h-6" />
               </button>
@@ -352,7 +354,7 @@ const Services = () => {
                 )}
 
                 <form onSubmit={handleInquirySubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                       <input
@@ -378,7 +380,7 @@ const Services = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                       <input
@@ -422,18 +424,18 @@ const Services = () => {
                     />
                   </div>
 
-                  <div className="flex justify-end gap-3 pt-2">
+                  <div className="flex flex-col sm:flex-row justify-end gap-3 pt-2">
                     <button 
                       type="button"
                       onClick={closeServiceModal}
-                      className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50"
+                      className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors duration-200 touch-manipulation"
                     >
                       Cancel
                     </button>
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className={`px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      className={`w-full sm:w-auto px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 touch-manipulation ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
                     >
                       {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
                     </button>

@@ -36,9 +36,10 @@ const Homepage = () => {
 
     try {
       // EmailJS configuration - Replace with your actual IDs
-      const serviceId = 'service_j1it8n7';
-      const templateId = 'template_uvnmczx';
-      const publicKey = 'h7cnMVE1nufu98OC7';
+      // EmailJS configuration - Replace with your actual IDs
+      const serviceId = 'service_van68sx';
+      const templateId = 'template_vvqwg6g';
+      const publicKey = 'lp3xlBpSGL1BpQm73';
       // Prepare template parameters
       const templateParams = {
         from_name: inquiryName,

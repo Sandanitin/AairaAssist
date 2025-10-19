@@ -35,20 +35,24 @@ const Contact = () => {
 
     try {
       // EmailJS configuration - Replace with your actual IDs
-      const serviceId = 'service_j1it8n7';
-      const templateId = 'template_uvnmczx';
-      const publicKey = 'h7cnMVE1nufu98OC7';
+      const serviceId = 'service_van68sx';
+      const templateId = 'template_vvqwg6g';
+      const publicKey = 'lp3xlBpSGL1BpQm73';
 
       // Prepare template parameters
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
-        service: formData.service,
+        service: formData.service || 'Not specified',
         message: formData.message,
         to_email: 'info@aairaassist.ae', // Your business email
         reply_to: formData.email
       };
+
+      // Debug: Log the data being sent
+      console.log('Form data being sent:', formData);
+      console.log('Template parameters:', templateParams);
 
       // Send email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -258,6 +262,11 @@ const Contact = () => {
                        </option>
                      ))}
                    </select>
+                   {formData.service === '' && (
+                     <p className="mt-1 text-sm text-gray-500">
+                       Optional: Select a service you're interested in
+                     </p>
+                   )}
                  </div>
 
                  <div>

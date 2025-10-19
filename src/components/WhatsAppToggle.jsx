@@ -5,7 +5,7 @@ const WhatsAppToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  const phoneNumber = '+97143535218'; // Your WhatsApp number
+  const phoneNumber = '+971562676803'; // Your WhatsApp number
   const defaultMessage = 'Hello! I would like to know more about your financial services.';
 
   const handleWhatsAppClick = () => {
