@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="space-y-3 text-gray-400 text-xs sm:text-sm">
               <div className="flex items-start">
                 <MapPinIcon className="w-5 h-5 text-primary-400 mr-3 mt-1" />
-                <span>Business Bay, Dubai, UAE</span>
+                <span>Bank Street - 4th Floor, Fahidi Heights - near Sharaf DG Metro - Dubai</span>
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="w-5 h-5 text-primary-400 mr-3" />
@@ -134,7 +134,7 @@ const Footer = () => {
             <span className="block sm:inline">All rights reserved. | Trusted Financial Advisory Services in Dubai</span>
           </p>
           <p className="text-gray-500 text-xs sm:text-sm mt-2">
-            Developed with <span aria-hidden>❤️</span> by
+            DESIGNED AND DEVELOPED BY
             {' '}
             <a
               href="https://www.vikrin.com/"

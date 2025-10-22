@@ -130,6 +130,101 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Financial Collaborations Hub Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-primary-50 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-100 rounded-full translate-x-48 -translate-y-48 opacity-30"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full -translate-x-40 translate-y-40 opacity-30"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-semibold mb-6">
+              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse"></span>
+              Trusted Partners
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our Financial
+              <span className="text-primary-600 block mt-2">Collaborations Hub</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Partnering with the UAE's leading financial institutions to bring you the best solutions, 
+              competitive rates, and exceptional service across all your banking and financing needs.
+            </p>
+          </div>
+
+          {/* Partners Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
+            {[
+              { name: 'Emirates NBD', logo: '/brands/Emirates_NBD_logo_arabic.png', darkBg: false },
+              { name: 'First Abu Dhabi Bank', logo: '/brands/First%20Abu%20Dhabi%20Bank%20(Fab)%20Logo%20Vector.svg%20.png', darkBg: false },
+              { name: 'Dubai Islamic Bank', logo: '/brands/Dubai%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+              { name: 'ADCB', logo: '/brands/Adcb-Bank-Abu-Dhabi-Commercial-Bank-New-Logo-Vector.jpg', darkBg: false },
+              { name: 'Mashreq Bank', logo: '/brands/Mashreq-Bank-Logo-Vector.jpg', darkBg: false },
+              { name: 'Emirates Islamic', logo: '/brands/Emirates%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: true },
+              { name: 'RAKBANK', logo: '/brands/RAKBANK_idbbPuaOyt_1.png', darkBg: false },
+              { name: 'HSBC', logo: '/brands/Hsbc%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+              { name: 'Citi Bank', logo: '/brands/Citi-Bank-Logo-Vector.jpg', darkBg: false },
+              { name: 'Commercial Bank of Dubai', logo: '/brands/Commercial%20Bank%20of%20Dubai_idUvYDR3Jv_1.png', darkBg: false },
+              { name: 'Deem Finance', logo: '/brands/Deem%20Finance_idirMJ49jf_1.png', darkBg: true },
+              { name: 'Ajman Bank', logo: '/brands/ajman.png', darkBg: false },
+              { name: 'Financial Services', logo: '/brands/ide8sLvI-b_logos.png', darkBg: false },
+              { name: 'Wio Bank', logo: '/brands/w.jpeg', darkBg: true },
+              { name: 'Beehive', logo: '/brands/download.png', darkBg: false },
+              { name: 'AAFAQ Islamic Finance', logo: '/brands/images.jpeg', darkBg: true },
+            ].map((partner, index) => (
+              <div
+                key={index}
+                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-primary-300"
+              >
+                <div className={`flex items-center justify-center h-20 lg:h-24 rounded-lg p-3 ${
+                  partner.darkBg 
+                    ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+                    : 'bg-white'
+                }`}>
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                    onError={(e) => {
+                      console.error(`Failed to load logo for ${partner.name}`);
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Stats/CTA */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-primary-100 shadow-lg">
+              <div className="text-4xl font-bold text-primary-600 mb-2">15+</div>
+              <div className="text-gray-600 font-medium">Banking Partners</div>
+            </div>
+            <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
+              <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
+              <div className="text-gray-600 font-medium">Trusted Institutions</div>
+            </div>
+            <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-purple-100 shadow-lg">
+              <div className="text-4xl font-bold text-purple-600 mb-2">UAE Wide</div>
+              <div className="text-gray-600 font-medium">Coverage</div>
+            </div>
+          </div>
+
+          {/* Call to Action
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setIsInquiryOpen(true)}
+              className="inline-flex items-center px-8 py-4 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 active:bg-primary-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0"
+            >
+              Explore Our Solutions
+              <ArrowRightIcon className="ml-2 h-5 w-5" />
+            </button>
+          </div> */}
+        </div>
+      </section>
+
       {isInquiryOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={closeInquiry}></div>
