@@ -153,47 +153,86 @@ const Homepage = () => {
             </p>
           </div>
 
-          {/* Partners Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-            {[
-              { name: 'Emirates NBD', logo: '/brands/Emirates_NBD_logo_arabic.png', darkBg: false },
-              { name: 'First Abu Dhabi Bank', logo: '/brands/First%20Abu%20Dhabi%20Bank%20(Fab)%20Logo%20Vector.svg%20.png', darkBg: false },
-              { name: 'Dubai Islamic Bank', logo: '/brands/Dubai%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
-              { name: 'ADCB', logo: '/brands/Adcb-Bank-Abu-Dhabi-Commercial-Bank-New-Logo-Vector.jpg', darkBg: false },
-              { name: 'Mashreq Bank', logo: '/brands/Mashreq-Bank-Logo-Vector.jpg', darkBg: false },
-              { name: 'Emirates Islamic', logo: '/brands/Emirates%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: true },
-              { name: 'RAKBANK', logo: '/brands/RAKBANK_idbbPuaOyt_1.png', darkBg: false },
-              { name: 'HSBC', logo: '/brands/Hsbc%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
-              { name: 'Citi Bank', logo: '/brands/Citi-Bank-Logo-Vector.jpg', darkBg: false },
-              { name: 'Commercial Bank of Dubai', logo: '/brands/Commercial%20Bank%20of%20Dubai_idUvYDR3Jv_1.png', darkBg: false },
-              { name: 'Deem Finance', logo: '/brands/Deem%20Finance_idirMJ49jf_1.png', darkBg: true },
-              { name: 'Ajman Bank', logo: '/brands/ajman.png', darkBg: false },
-              { name: 'Financial Services', logo: '/brands/ide8sLvI-b_logos.png', darkBg: false },
-              { name: 'Wio Bank', logo: '/brands/w.jpeg', darkBg: true },
-              { name: 'Beehive', logo: '/brands/download.png', darkBg: false },
-              { name: 'AAFAQ Islamic Finance', logo: '/brands/images.jpeg', darkBg: true },
-            ].map((partner, index) => (
-              <div
-                key={index}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-primary-300"
-              >
-                <div className={`flex items-center justify-center h-20 lg:h-24 rounded-lg p-3 ${
-                  partner.darkBg 
-                    ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
-                    : 'bg-white'
-                }`}>
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-w-full max-h-full object-contain transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                    onError={(e) => {
-                      console.error(`Failed to load logo for ${partner.name}`);
-                      e.target.style.display = 'none';
-                    }}
-                  />
+          {/* Partners Carousel - Auto-scrolling */}
+          <div className="relative overflow-hidden mb-12">
+            <style>{`
+              @keyframes scroll-left {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+              .animate-scroll {
+                animation: scroll-left 30s linear infinite;
+              }
+              .animate-scroll:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+            
+            <div className="flex gap-6 lg:gap-8 animate-scroll">
+              {/* First set of logos */}
+              {[
+                { name: 'Emirates NBD', logo: '/brands/Emirates_NBD_logo_arabic.png', darkBg: false },
+                { name: 'First Abu Dhabi Bank', logo: '/brands/First%20Abu%20Dhabi%20Bank%20(Fab)%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'Dubai Islamic Bank', logo: '/brands/Dubai%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'ADCB', logo: '/brands/Adcb-Bank-Abu-Dhabi-Commercial-Bank-New-Logo-Vector.jpg', darkBg: false },
+                { name: 'Mashreq Bank', logo: '/brands/Mashreq-Bank-Logo-Vector.jpg', darkBg: false },
+                { name: 'Emirates Islamic', logo: '/brands/Emirates%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: true },
+                { name: 'RAKBANK', logo: '/brands/RAKBANK_idbbPuaOyt_1.png', darkBg: false },
+                { name: 'HSBC', logo: '/brands/Hsbc%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'Citi Bank', logo: '/brands/Citi-Bank-Logo-Vector.jpg', darkBg: false },
+                { name: 'Commercial Bank of Dubai', logo: '/brands/Commercial%20Bank%20of%20Dubai_idUvYDR3Jv_1.png', darkBg: false },
+                { name: 'Deem Finance', logo: '/brands/Deem%20Finance_idirMJ49jf_1.png', darkBg: true },
+                { name: 'Ajman Bank', logo: '/brands/ajman.png', darkBg: false },
+                { name: 'Financial Services', logo: '/brands/ide8sLvI-b_logos.png', darkBg: false },
+                { name: 'Wio Bank', logo: '/brands/w.jpeg', darkBg: true },
+                { name: 'Beehive', logo: '/brands/download.png', darkBg: false },
+                { name: 'AAFAQ Islamic Finance', logo: '/brands/images.jpeg', darkBg: true },
+              ].concat([
+                // Duplicate set for seamless loop
+                { name: 'Emirates NBD', logo: '/brands/Emirates_NBD_logo_arabic.png', darkBg: false },
+                { name: 'First Abu Dhabi Bank', logo: '/brands/First%20Abu%20Dhabi%20Bank%20(Fab)%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'Dubai Islamic Bank', logo: '/brands/Dubai%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'ADCB', logo: '/brands/Adcb-Bank-Abu-Dhabi-Commercial-Bank-New-Logo-Vector.jpg', darkBg: false },
+                { name: 'Mashreq Bank', logo: '/brands/Mashreq-Bank-Logo-Vector.jpg', darkBg: false },
+                { name: 'Emirates Islamic', logo: '/brands/Emirates%20Islamic%20Bank%20Logo%20Vector.svg%20.png', darkBg: true },
+                { name: 'RAKBANK', logo: '/brands/RAKBANK_idbbPuaOyt_1.png', darkBg: false },
+                { name: 'HSBC', logo: '/brands/Hsbc%20Bank%20Logo%20Vector.svg%20.png', darkBg: false },
+                { name: 'Citi Bank', logo: '/brands/Citi-Bank-Logo-Vector.jpg', darkBg: false },
+                { name: 'Commercial Bank of Dubai', logo: '/brands/Commercial%20Bank%20of%20Dubai_idUvYDR3Jv_1.png', darkBg: false },
+                { name: 'Deem Finance', logo: '/brands/Deem%20Finance_idirMJ49jf_1.png', darkBg: true },
+                { name: 'Ajman Bank', logo: '/brands/ajman.png', darkBg: false },
+                { name: 'Financial Services', logo: '/brands/ide8sLvI-b_logos.png', darkBg: false },
+                { name: 'Wio Bank', logo: '/brands/w.jpeg', darkBg: true },
+                { name: 'Beehive', logo: '/brands/download.png', darkBg: false },
+                { name: 'AAFAQ Islamic Finance', logo: '/brands/images.jpeg', darkBg: true },
+              ]).map((partner, index) => (
+                <div
+                  key={index}
+                  className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-primary-300 flex-shrink-0 w-64"
+                  style={{ minWidth: '16rem' }}
+                >
+                  <div className={`flex items-center justify-center h-20 lg:h-24 rounded-lg p-3 ${
+                    partner.darkBg 
+                      ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+                      : 'bg-white'
+                  }`}>
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-w-full max-h-full object-contain transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                      onError={(e) => {
+                        console.error(`Failed to load logo for ${partner.name}`);
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Bottom Stats/CTA */}
