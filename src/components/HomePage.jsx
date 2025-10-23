@@ -165,14 +165,36 @@ const Homepage = () => {
                 }
               }
               .animate-scroll {
-                animation: scroll-left 30s linear infinite;
+                animation: scroll-left 60s linear infinite;
+                display: flex;
+                width: fit-content;
               }
               .animate-scroll:hover {
                 animation-play-state: paused;
               }
+              /* Gradient fade on edges */
+              .scroll-container::before,
+              .scroll-container::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 100px;
+                z-index: 2;
+                pointer-events: none;
+              }
+              .scroll-container::before {
+                left: 0;
+                background: linear-gradient(to right, rgba(249, 250, 251, 1), rgba(249, 250, 251, 0));
+              }
+              .scroll-container::after {
+                right: 0;
+                background: linear-gradient(to left, rgba(249, 250, 251, 1), rgba(249, 250, 251, 0));
+              }
             `}</style>
             
-            <div className="flex gap-6 lg:gap-8 animate-scroll">
+            <div className="scroll-container relative">
+              <div className="flex gap-6 lg:gap-8 animate-scroll">
               {/* First set of logos */}
               {[
                 { name: 'Emirates NBD', logo: '/brands/Emirates_NBD_logo_arabic.png', darkBg: false },
@@ -232,13 +254,14 @@ const Homepage = () => {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
 
           {/* Bottom Stats/CTA */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-primary-100 shadow-lg">
-              <div className="text-4xl font-bold text-primary-600 mb-2">15+</div>
+              <div className="text-4xl font-bold text-primary-600 mb-2">16+</div>
               <div className="text-gray-600 font-medium">Banking Partners</div>
             </div>
             <div className="text-center p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-blue-100 shadow-lg">
